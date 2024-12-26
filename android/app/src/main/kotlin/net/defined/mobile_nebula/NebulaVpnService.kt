@@ -142,7 +142,7 @@ class NebulaVpnService : VpnService() {
 
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         cm.allNetworks.forEach { network ->
-            cm.getLinkProperties(network).dnsServers.forEach { builder.addDnsServer(it) }
+            cm.getLinkProperties(network)?.dnsServers.forEach { builder.addDnsServer(it) }
         }
 
         try {

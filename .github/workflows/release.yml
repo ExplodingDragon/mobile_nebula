@@ -66,13 +66,19 @@ jobs:
           mv build/app/outputs/bundle/release/app-release.aab \
             build/app/outputs/bundle/release/MobileNebula.aab
 
-      # - name: Create GitHub Release
-      #   id: create_release
-      #   uses: softprops/action-gh-release@v2
-      #   with:
-      #     name: Release ${{ github.ref }}
-      #     draft: true
-      #     prerelease: false
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     files: |
-      #       build/app/outputs/bundle/release/MobileNebula.aab
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ github.ref }}
+          draft: true
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            build/app/outputs/bundle/release/MobileNebula.aab
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-gh-android
+          path: |
+            build/app/outputs/bundle/release/MobileNebula.aab
