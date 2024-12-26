@@ -43,15 +43,6 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        release {
-            keyAlias 'key'
-            storeFile System.getenv('GOOGLE_PLAY_KEYSTORE_PATH') ? file(System.getenv('GOOGLE_PLAY_KEYSTORE_PATH')) : null
-            keyPassword System.getenv('GOOGLE_PLAY_KEYSTORE_PASSWORD')
-            storePassword System.getenv('GOOGLE_PLAY_KEYSTORE_PASSWORD')
-        }
-    }
-
     buildTypes {
         release {
             signingConfig signingConfigs.release
