@@ -1,5 +1,8 @@
 name: Create release and upload to Apple and Google
-on: [push]
+on:
+  push:
+    branches:
+      - main
 jobs:
   build:
     name: Build ios and android package
